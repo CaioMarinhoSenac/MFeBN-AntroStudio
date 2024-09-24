@@ -10,14 +10,6 @@
 
 ###
 
-<div align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=CaioMarinhoSenac&repo=MFeBN-AntroStudio&hide_title=true&hide_rank=false&show_icons=true&include_all_commits=true&count_private=true&disable_animations=false&theme=synthwave&locale=pt-br&hide_border=true&order=1" height="150" alt="stats graph" /> <br>
-  <img src="https://github-readme-activity-graph.vercel.app/graph?username=CaioMarinhoSenac&repo=MFeBN-AntroStudio&radius=16&theme=synthwave-84&area=true&order=5&hide_title=true&hide_border=true" height="300" alt="activity-graph graph" /> <br>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs?username=CaioMarinhoSenac&repo=MFeBN-AntroStudio&locale=pt-br&hide_title=false&layout=compact&card_width=320&langs_count=5&theme=synthwave&hide_border=true&order=2" height="150" alt="languages graph"  />
-</div>
-
-###
-
 <h2 align="left"></h2>
 
 ###
@@ -50,8 +42,11 @@
 
 <br clear="both">
 
-<div align="center">
-  <img height="400" src="https://github.com/user-attachments/assets/dd848cd9-3388-4f47-911d-4e56a1710593"  />
+<div align="left">
+  <img height="200" src="https://github.com/user-attachments/assets/dc377de3-5888-48e6-b605-e0714f7e64a2"  />
+</div>
+<div align="right">
+  <img height="250" src="https://github.com/user-attachments/assets/3b6956a8-28ba-4bf3-b796-2e412c8ab03c"  />
 </div>
 
 ###
