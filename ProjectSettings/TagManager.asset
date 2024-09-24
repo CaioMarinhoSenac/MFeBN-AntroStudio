@@ -1,0 +1,79 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Area
+  - EntradaDaDireita
+  - EntradaDaEsquerda
+  - EntradaDeCima
+  - EntradaDeBaixo
+  - Projetil
+  - ProjetilInimigo
+  - Enemy
+  - Teto
+  - PlayerCorpo
+  - InimigoCorpo
+  - Parede
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - 
+  - Enemy
+  - Player
+  - Wall
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: 5
+    uniqueID: 3515473339
+    locked: 0
+  - name: 4
+    uniqueID: 3662578271
+    locked: 0
+  - name: 3
+    uniqueID: 3418350163
+    locked: 0
+  - name: 2
+    uniqueID: 116515307
+    locked: 0
+  - name: 1
+    uniqueID: 2326802635
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 4167791619
+    locked: 0
+  - name: Cenario
+    uniqueID: 276826531
+    locked: 0
+  - name: Teto
+    uniqueID: 4042355037
+    locked: 0
