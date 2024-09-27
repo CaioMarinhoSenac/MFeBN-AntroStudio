@@ -14,6 +14,7 @@ public class ArmaAutomatica : MonoBehaviour
     public GameObject projetil;
     public GameObject muzzleFlash;
     public GameObject RecarregarSlider;
+    public BulletShellEjector bulletShellEjector;
     [SerializeField] protected Transform[] canos;
     [SerializeField] protected Animator animator;
     [SerializeField] protected CamAnimations camAnimations;
@@ -81,9 +82,14 @@ public class ArmaAutomatica : MonoBehaviour
         {
             cadenciaControl = Time.time + cadencia;
             municaoAtual--;
-            Instantiate(projetil, canos[cano].position, canos[cano].rotation);                        
-            camAnimations.CamShake();
+
+            Instantiate(projetil, canos[cano].position, canos[cano].rotation);
+            bulletShellEjector.EjectShell();
+
+            camAnimations.CamShake();            
+
             cano++;
+
             muzzleFlash.SetActive(true);
             yield return new WaitForSeconds(0.5f);
             muzzleFlash.SetActive(false);

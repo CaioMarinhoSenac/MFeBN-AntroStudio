@@ -14,6 +14,7 @@ public class RangedEnemyWeapon : MonoBehaviour
     [Header("Referencias de Cena")]
     private GameObject target;
     [SerializeField] private GameObject projetilInimigo;
+    [SerializeField] private BulletShellEjector bulletShellEjector;
     [SerializeField] protected Animator animator;
 
     protected float cadenciaControl;
@@ -62,7 +63,9 @@ public class RangedEnemyWeapon : MonoBehaviour
         }
         else {
             cadenciaControl = Time.time + cadencia;
+
             Instantiate(projetilInimigo, cano.position, cano.rotation);
+            bulletShellEjector.EjectShell();
 
             muzzleFlash.SetActive(true);
             yield return new WaitForSeconds(0.5f);

@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &146123054200393452
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4394766913015921861}
+  m_Layer: 9
+  m_Name: ShellEjector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4394766913015921861
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 146123054200393452}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.5960897, w: 0.8029178}
+  m_LocalPosition: {x: -0.029999867, y: 0.16800003, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8176171220489646489}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 73.181}
 --- !u!1 &272946492792333688
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +76,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd12280dd32473d478bbc2bcb5442986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
   enemyTransform: {fileID: 5486430666341071966}
   rendererEnemy: {fileID: 133054627697661622}
   distance: 0.45
@@ -401,7 +431,6 @@ MonoBehaviour:
   animator: {fileID: 5398361379595641693}
   minDistance: 3.5
   maxDistance: 5.5
-  target: {fileID: 0}
   rigidBody: {fileID: 2034298490562926001}
 --- !u!61 &8134536636626806611
 BoxCollider2D:
@@ -618,9 +647,10 @@ GameObject:
   - component: {fileID: 1606840812092480541}
   - component: {fileID: 6154446627605022115}
   - component: {fileID: 5794428467431596121}
+  - component: {fileID: 7792518261144563818}
   m_Layer: 9
   m_Name: USP-S
-  m_TagString: Player
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -640,6 +670,7 @@ Transform:
   m_Children:
   - {fileID: 9205769379908348147}
   - {fileID: 5217114890931625685}
+  - {fileID: 4394766913015921861}
   m_Father: {fileID: 4892529046423006941}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1317309191105653397
@@ -781,6 +812,22 @@ MonoBehaviour:
   distanciaParaDisparar: 5.5
   cano: {fileID: 9205769379908348147}
   muzzleFlash: {fileID: 1788055788982384922}
-  target: {fileID: 0}
   projetilInimigo: {fileID: 6132166454673448238, guid: 9b81860a188f88841aab5c213105a5ff, type: 3}
+  bulletShellEjector: {fileID: 7792518261144563818}
   animator: {fileID: 1606840812092480541}
+--- !u!114 &7792518261144563818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6410250346739786111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01174d4b01035004e9b0df8733652590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellPool: {fileID: 0}
+  ejectionPoint: {fileID: 4394766913015921861}
+  torqueForce: 10
+  shellType: 1

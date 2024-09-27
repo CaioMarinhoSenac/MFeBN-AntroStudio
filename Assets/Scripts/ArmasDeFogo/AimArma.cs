@@ -73,8 +73,8 @@ public class AimArma : MonoBehaviour
         // GIRAR SPRITE JOGADOR
         if (playerParaDirecao != Vector3.zero)
         {
-            animatorPlayer.SetFloat("HorizontalAxis", playerParaDirecao.x);
-            animatorPlayer.SetFloat("VerticalAxis", playerParaDirecao.y);
+            animatorPlayer.SetFloat("Horizontal", playerParaDirecao.x);
+            animatorPlayer.SetFloat("Vertical", playerParaDirecao.y);
         }
 
         animatorPlayer.SetFloat("Speed", movimentSpeed);
