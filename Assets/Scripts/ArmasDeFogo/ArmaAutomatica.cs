@@ -18,6 +18,7 @@ public class ArmaAutomatica : MonoBehaviour
     [SerializeField] protected Transform[] canos;
     [SerializeField] protected Animator animator;
     [SerializeField] protected CamAnimations camAnimations;
+    [SerializeField] protected AudioSource somDisparo;
 
     protected int cano;
     protected bool recarregando;
@@ -85,6 +86,8 @@ public class ArmaAutomatica : MonoBehaviour
 
             Instantiate(projetil, canos[cano].position, canos[cano].rotation);
             bulletShellEjector.EjectShell();
+
+            somDisparo.Play();
 
             camAnimations.CamShake();            
 

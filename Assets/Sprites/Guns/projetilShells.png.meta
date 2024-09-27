@@ -136,7 +136,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: projetilShellPlayer
+      name: projetilShellsPistola
       rect:
         serializedVersion: 2
         x: 0
@@ -150,14 +150,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 92153983ba03f7f47b43fc890e175d73
-      internalID: 1719228733
+      spriteID: 5078643490918204fb4b8d27258ec11c
+      internalID: 617832313
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: projetilShellInimigo
+      name: projetilShellsInimigo
       rect:
         serializedVersion: 2
         x: 2
@@ -171,8 +171,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b3485681fe4ee37449047ee5597a42d6
-      internalID: -1093909919
+      spriteID: 8109280a02a45744c8ebb6619e1a657b
+      internalID: 2020336845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: projetilShellsShorty
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 0
+        width: 2
+        height: 4
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4afc91ca6dc3c524990cb9b917df5e35
+      internalID: 402244566
       vertices: []
       indices: 
       edges: []
@@ -188,8 +209,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      projetilShellInimigo: -1093909919
-      projetilShellPlayer: 1719228733
+      projetilShellsInimigo: 2020336845
+      projetilShellsPistola: 617832313
+      projetilShellsShorty: 402244566
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

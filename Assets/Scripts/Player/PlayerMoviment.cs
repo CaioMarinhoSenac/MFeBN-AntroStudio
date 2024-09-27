@@ -14,11 +14,17 @@ public class PlayerMoviment : MonoBehaviour
     [SerializeField] private float dynamicMovimentSpeed = 1f;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
+    [SerializeField] private AudioSource somPassos;
     [Header("Configurar Dash:")]
     [SerializeField] public float dashSpeed;
     [SerializeField] public float dashCooldown;
     [SerializeField] public float dashDuration;
     [SerializeField] public float dashFXDuration;
+    [SerializeField] public AudioSource somDash;
+
+    private float cooldownPassos = 0.1f;
+
+    private bool podeTocarPasso = true;
 
     void Update()
     {
@@ -74,6 +80,8 @@ public class PlayerMoviment : MonoBehaviour
         Player.podeAndar = false;
         VidaScript.AtivarInvencibilidade(dashFXDuration);
 
+        somDash.Play();
+
         float elapsedTime = 0f;
         Vector2 originalVelocity = rigidBody.velocity;
 
@@ -100,5 +108,20 @@ public class PlayerMoviment : MonoBehaviour
         canDash = false; 
         yield return new WaitForSeconds(dashCooldown); 
         canDash = true; 
+    }
+
+    public void Passos()
+    {
+        if (podeTocarPasso)
+        {
+            somPassos.Play();
+            StartCoroutine(CooldownPassos());  // Inicia o cooldown após tocar o som
+        }
+    }
+    private IEnumerator CooldownPassos()
+    {
+        podeTocarPasso = false;  // Impede que o som seja tocado novamente
+        yield return new WaitForSeconds(cooldownPassos);  // Espera pelo tempo de cooldown
+        podeTocarPasso = true;  // Permite que o som possa ser tocado novamente
     }
 }

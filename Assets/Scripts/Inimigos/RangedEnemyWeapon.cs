@@ -16,6 +16,7 @@ public class RangedEnemyWeapon : MonoBehaviour
     [SerializeField] private GameObject projetilInimigo;
     [SerializeField] private BulletShellEjector bulletShellEjector;
     [SerializeField] protected Animator animator;
+    [SerializeField] private AudioSource somDisparo;
 
     protected float cadenciaControl;
     protected float movimentSpeed;
@@ -68,6 +69,7 @@ public class RangedEnemyWeapon : MonoBehaviour
 
             Instantiate(projetilInimigo, cano.position, cano.rotation);
             bulletShellEjector.EjectShell();
+            somDisparo.Play();
 
             muzzleFlash.SetActive(true);
             yield return new WaitForSeconds(0.5f);

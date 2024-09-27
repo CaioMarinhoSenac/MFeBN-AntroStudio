@@ -11,8 +11,15 @@ public class ArmaShotgun : ArmaAutomatica
             cadenciaControl = Time.time + cadencia;
             Instantiate(projetil, cano.position, cano.rotation);
         }
+        bulletShellEjector.EjectShell();
+        bulletShellEjector.EjectShell();
+
+        somDisparo.Play();
+
         camAnimations.CamShake();
+
         municaoAtual--;
+
         muzzleFlash.SetActive(true);
         yield return new WaitForSeconds(0.6f);
         muzzleFlash.SetActive(false);

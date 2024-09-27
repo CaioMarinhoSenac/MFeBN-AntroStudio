@@ -9,9 +9,11 @@ public class ReloadingScript : MonoBehaviour
 {
     private float tempoDeDuracao, tempo;
     public Image fill;
+    public AudioSource somRecarregar;
 
     private void OnEnable()
     {
+        somRecarregar.Play();
         tempoDeDuracao = 1.5f;
         tempo = tempoDeDuracao;
         Update();        

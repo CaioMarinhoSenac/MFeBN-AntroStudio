@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3663288772361936031}
   - component: {fileID: 4869554383937602363}
-  - component: {fileID: 1619741405816474729}
+  - component: {fileID: 3406249605273289069}
   m_Layer: 10
-  m_Name: ShellPrefab
-  m_TagString: Projetil
+  m_Name: ShellPrefabShorty
+  m_TagString: ProjetilInimigo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 617832313, guid: c2232f23edac67643869fd2c41f865da, type: 3}
+  m_Sprite: {fileID: 402244566, guid: c2232f23edac67643869fd2c41f865da, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!50 &1619741405816474729
+--- !u!50 &3406249605273289069
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

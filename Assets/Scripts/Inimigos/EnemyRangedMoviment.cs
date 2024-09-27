@@ -12,10 +12,14 @@ public class EnemyRangedMoviment : MonoBehaviour
     [Space]
     [Header("Referencias de cena")]
     private GameObject target;
-    [SerializeField] private Rigidbody2D rigidBody;   
+    [SerializeField] private Rigidbody2D rigidBody;
+    [SerializeField] private AudioSource somPassos;
 
     private Vector2 movimentDirection;
     private float movimentSpeed;
+
+    private bool podeTocarPasso = true;
+    private float cooldownPassos = 0.1f;
 
     private void Start()
     {
@@ -67,5 +71,20 @@ public class EnemyRangedMoviment : MonoBehaviour
         }
 
         animator.SetFloat("Speed", movimentSpeed);
+    }
+
+    public void Passos()
+    {
+        if (podeTocarPasso)
+        {
+            somPassos.Play();
+            StartCoroutine(CooldownPassos());  // Inicia o cooldown após tocar o som
+        }
+    }
+    private IEnumerator CooldownPassos()
+    {
+        podeTocarPasso = false;  // Impede que o som seja tocado novamente
+        yield return new WaitForSeconds(cooldownPassos);  // Espera pelo tempo de cooldown
+        podeTocarPasso = true;  // Permite que o som possa ser tocado novamente
     }
 }

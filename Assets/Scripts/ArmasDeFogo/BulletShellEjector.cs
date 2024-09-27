@@ -19,23 +19,21 @@ public class BulletShellEjector : MonoBehaviour
         {
             shellPool = FindObjectOfType<ShellPool>();
         }
-
-        if (CompareTag("Player"))
-        {
-            shellType = 0; // Jogador
-        }
-        else if (CompareTag("Enemy"))
-        {
-            shellType = 1; // Inimigo
-        }
     }
 
     public void EjectShell()
     {
         // Obtém o cartucho do pool
         GameObject shell = shellPool.GetShell(shellType);
-        shell.transform.position = ejectionPoint.position;
-        shell.transform.rotation = ejectionPoint.rotation;
+
+        // Gera um ponto aleatório ao redor do ejectionPoint
+        Vector2 randomPosition = Random.insideUnitCircle * 0.5f;
+        Vector3 shellPosition = ejectionPoint.position + new Vector3(randomPosition.x, randomPosition.y, 0);
+
+        float randomRotation = Random.Range(-15f, 15f);
+        Quaternion shellRotation = ejectionPoint.rotation * Quaternion.Euler(0, 0, randomRotation);
+
+        shell.transform.SetPositionAndRotation(shellPosition, shellRotation);
         shell.SetActive(true); // Ativa o cartucho
 
         // Adiciona força e torque para simular a ejeção
