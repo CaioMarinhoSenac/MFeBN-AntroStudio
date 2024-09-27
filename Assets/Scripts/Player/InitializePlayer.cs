@@ -8,6 +8,7 @@ public class InitializePlayer : MonoBehaviour
     public Transform playerTransform;
     public Rigidbody2D playerRigidbody;   
     public GameObject PlayerCoracaoPanel;
+    public GameObject PlayerReloadingPanel;
     public Sprite PlayerCoracaoCheio, PlayerCoracaoMetade;
     public Animator playerAnimator;
     public float playerVida;
@@ -38,6 +39,7 @@ public class InitializePlayer : MonoBehaviour
         Player.vivo = true;
         Player.podeAndar = true;
         Player.ReloadPanel = playerReloadPanel;
+        Player.ReloadingPanel = PlayerReloadingPanel;
         Player.Hitbox = playerHitbox;
 
         Player.transform.position = new Vector3(0, 0, 0);
@@ -45,6 +47,9 @@ public class InitializePlayer : MonoBehaviour
         Player.crosshair.SetActive(true);
         Player.MaoArma.SetActive(true);
         Player.ReloadPanel.SetActive(false);
+        Player.ReloadingPanel.SetActive(false);
+
+        Player.transform.GetComponent<Rigidbody2D>().simulated = true;
 
         Player.animator.SetBool("Morrer", false);
 

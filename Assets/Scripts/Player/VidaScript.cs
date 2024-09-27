@@ -122,6 +122,8 @@ public class VidaScript : MonoBehaviour
         Player.MaoArma.SetActive(false);
         Player.vivo = false;
         Player.podeAndar = false;
+
+        Player.transform.GetComponent<Rigidbody2D>().simulated = false;
     }
     public static void RedesenharCoracoes()
     {

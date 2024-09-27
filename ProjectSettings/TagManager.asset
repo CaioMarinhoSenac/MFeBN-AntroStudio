@@ -16,6 +16,8 @@ TagManager:
   - PlayerCorpo
   - InimigoCorpo
   - Parede
+  - BossCorpo
+  - Boss
   layers:
   - Default
   - TransparentFX

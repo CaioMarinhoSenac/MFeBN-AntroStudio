@@ -24,6 +24,7 @@ public static class Player
     public static GameObject MaoArma;
 
     public static GameObject ReloadPanel;
+    public static GameObject ReloadingPanel;
 
     public static bool vivo;
     public static bool invencivel;
