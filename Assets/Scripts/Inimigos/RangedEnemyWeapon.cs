@@ -19,12 +19,14 @@ public class RangedEnemyWeapon : MonoBehaviour
 
     protected float cadenciaControl;
     protected float movimentSpeed;
+    private bool podeAtirar;
 
     private void Start()
     {
+        podeAtirar = false;
+        StartCoroutine(Spawnou());
         muzzleFlash.SetActive(false);
         target = GameObject.FindGameObjectWithTag("Player");
-        StartCoroutine(Spawnou());
     }
 
     private void Update()
@@ -49,7 +51,7 @@ public class RangedEnemyWeapon : MonoBehaviour
         // Aplica a rotação para que o inimigo aponte para o jogador
         transform.eulerAngles = new Vector3(0, 0, angle);
 
-        if ((Vector2.Distance(target.transform.position, transform.position) <= distanciaParaDisparar) && PodeDisparar() && Player.vivo)
+        if ((Vector2.Distance(target.transform.position, transform.position) <= distanciaParaDisparar) && DispararCooldown() && Player.vivo && podeAtirar)
         {
             StartCoroutine(Disparar());
         }
@@ -57,7 +59,7 @@ public class RangedEnemyWeapon : MonoBehaviour
 
     protected IEnumerator Disparar()
     {
-        if (!PodeDisparar())
+        if (!DispararCooldown())
         {
             yield break;
         }
@@ -72,12 +74,13 @@ public class RangedEnemyWeapon : MonoBehaviour
             muzzleFlash.SetActive(false);
         }
     }
-    protected bool PodeDisparar()
+    protected bool DispararCooldown()
     {
         return Time.time > cadenciaControl;
     }
     protected IEnumerator Spawnou()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
+        podeAtirar = true;
     }
 }

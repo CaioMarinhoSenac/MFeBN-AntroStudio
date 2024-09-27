@@ -2,16 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class ControladoraDeSalas : MonoBehaviour
 {
     public Transform SalasCena;
     private Sprite anteriorIcon;
     public GameObject Inimigo;
+    public InitializePlayer initializePlayer;
 
     void Start()
     {
         anteriorIcon = Level.normalRoomIcon;
+    }
+    void Update()
+    {
+        if (!Player.vivo)
+        {
+            Player.ReloadPanel.SetActive(true);
+
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                Renascer();
+            }
+        }
     }
     void MudarIconeSala(Sala salaAtual, Sala proximaSala)
     {
@@ -97,9 +111,7 @@ public class ControladoraDeSalas : MonoBehaviour
 
                 Player.transform.position = new Vector3(6.2f, 0, 0);
 
-                DestroyGameObjectsWithTag("Enemy");
-                DestroyGameObjectsWithTag("Projetil");
-                DestroyGameObjectsWithTag("ProjetilInimigo");
+                DestruirObjetos();
 
                 MudarIconeSala(Player.SalaAtual, sala);
 
@@ -138,9 +150,7 @@ public class ControladoraDeSalas : MonoBehaviour
 
                 Player.transform.position = new Vector3(-6.2f, 0, 0);
 
-                DestroyGameObjectsWithTag("Enemy");
-                DestroyGameObjectsWithTag("Projetil");
-                DestroyGameObjectsWithTag("ProjetilInimigo");
+                DestruirObjetos();
 
                 MudarIconeSala(Player.SalaAtual, sala);
 
@@ -182,9 +192,7 @@ public class ControladoraDeSalas : MonoBehaviour
 
                 Player.transform.position = new Vector3(0, -3f, 0);
 
-                DestroyGameObjectsWithTag("Enemy");
-                DestroyGameObjectsWithTag("Projetil");
-                DestroyGameObjectsWithTag("ProjetilInimigo");
+                DestruirObjetos();
 
                 MudarIconeSala(Player.SalaAtual, sala);
 
@@ -226,9 +234,7 @@ public class ControladoraDeSalas : MonoBehaviour
 
                 Player.transform.position = new Vector3(0, 3f, 0);
 
-                DestroyGameObjectsWithTag("Enemy");
-                DestroyGameObjectsWithTag("Projetil");
-                DestroyGameObjectsWithTag("ProjetilInimigo");
+                DestruirObjetos();
 
                 MudarIconeSala(Player.SalaAtual, sala);
 
@@ -306,6 +312,61 @@ public class ControladoraDeSalas : MonoBehaviour
         else
         {
             return;
+        }
+    }
+
+    void Renascer()
+    {
+            // Impede que o jogador ande durante a transição
+            Player.podeAndar = false;
+
+            // Define a localização da sala inicial
+            Vector2 localizacaoInicial = new Vector2(0, 0); // Supondo que (0, 0) é a localização da sala inicial
+
+            // Verifica se a sala inicial existe nas salas do nível
+            if (Level.Salas.Exists(x => x.Localizacao == localizacaoInicial))
+            {
+                Sala salaInicial = Level.Salas.First(x => x.Localizacao == localizacaoInicial);
+
+                // Desativa a sala atual
+                SalasCena.Find(Player.SalaAtual.ID.ToString()).transform.Find(GeradorDeLevel.DeterminarTipoPrefab(Player.SalaAtual))
+                .gameObject.SetActive(false);
+
+                // Ativa a sala inicial
+                GameObject salaInicialObj = SalasCena.Find(salaInicial.ID.ToString()).transform.Find
+                (GeradorDeLevel.DeterminarTipoPrefab(salaInicial)).gameObject;
+
+                salaInicialObj.SetActive(true);                
+
+                // Atualiza o ícone da sala
+                MudarIconeSala(Player.SalaAtual, salaInicial);               
+
+                // Revela a sala inicial e redesenha as salas reveladas
+                RedesenharSalasReveladas();                               
+
+                // Reajusta o Player
+                initializePlayer.ReinitializePlayer();
+
+            // Atualiza a sala atual do jogador
+            Player.SalaAtual = salaInicial;
+
+            // Remove inimigos e projéteis da sala anterior
+            DestruirObjetos();
+        }
+    }
+
+    void DestruirObjetos()
+    {
+        DestroyGameObjectsWithTag("Enemy");
+        DesativarObjetosPorTag("Projetil");
+        DesativarObjetosPorTag("ProjetilInimigo");
+    }
+    void DesativarObjetosPorTag(string tag)
+    {
+        GameObject[] objetos = GameObject.FindGameObjectsWithTag(tag);
+        foreach (GameObject objeto in objetos)
+        {
+            objeto.SetActive(false);
         }
     }
 }

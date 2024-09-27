@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class InitializePlayer : MonoBehaviour
 {
@@ -18,6 +19,11 @@ public class InitializePlayer : MonoBehaviour
 
     private void Start()
     {
+        ReinitializePlayer();
+    }
+
+    public void ReinitializePlayer()
+    {
         Player.transform = playerTransform;
         Player.rigidbody = playerRigidbody;
         Player.vida = playerVida;
@@ -30,7 +36,18 @@ public class InitializePlayer : MonoBehaviour
         Player.crosshair = playerCrosshair;
         Player.MaoArma = playerMaoArma;
         Player.vivo = true;
+        Player.podeAndar = true;
         Player.ReloadPanel = playerReloadPanel;
         Player.Hitbox = playerHitbox;
+
+        Player.transform.position = new Vector3(0, 0, 0);
+
+        Player.crosshair.SetActive(true);
+        Player.MaoArma.SetActive(true);
+        Player.ReloadPanel.SetActive(false);
+
+        Player.animator.SetBool("Morrer", false);
+
+        VidaScript.RedesenharCoracoes();
     }
 }

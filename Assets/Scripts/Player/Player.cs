@@ -26,6 +26,7 @@ public static class Player
     public static GameObject ReloadPanel;
 
     public static bool vivo;
+    public static bool invencivel;
 
     public static GameObject Hitbox;
 

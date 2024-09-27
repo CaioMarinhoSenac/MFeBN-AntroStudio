@@ -7,11 +7,6 @@ using UnityEngine.UI;
 
 public class VidaScript : MonoBehaviour
 {
-    private void Start()
-    {
-        DesenharCoracoes();
-    }
-
     public static void DesenharCoracao(Sprite tipo, int num)
     {
         GameObject Coracao = new GameObject("Coração");
@@ -43,7 +38,7 @@ public class VidaScript : MonoBehaviour
         CoracaoIcon.preserveAspect = true;
     }
 
-    static void DesenharCoracoes()
+    public static void DesenharCoracoes()
     {
         for (int i = 0; i < Mathf.FloorToInt(Player.vida); i++)
         {
@@ -58,18 +53,33 @@ public class VidaScript : MonoBehaviour
         }
     }
 
+    public static void AtivarInvencibilidade(float duracao)
+    {
+        CoroutineManager.Instance.StartCoroutine(Invencivel(duracao));
+    }
+
+    public static IEnumerator Invencivel(float cooldown)
+    {
+        Player.invencivel = true; // Ativa a invencibilidade
+
+        yield return new WaitForSeconds(cooldown); // Aguarda a duração da invencibilidade
+
+        Player.invencivel = false; // Desativa a invencibilidade
+    }
+
     public static void ReceberDano(float dano)
-    {           
-            CoroutineManager.Instance.StartCoroutine(Invencivel(Player.receberDanoCooldown));
+    {
+        if (Player.invencivel) return;
 
-            Player.vida -= dano;
+        Player.vida -= dano;
 
-            if (Player.vida <= 0)
+        if (Player.vida <= 0)
             {
-                CoroutineManager.Instance.StartCoroutine(Morrer());
+                Morrer();
             }
             else
             {
+                AtivarInvencibilidade(Player.receberDanoCooldown);
                 RedesenharCoracoes();
             }       
     }
@@ -99,31 +109,19 @@ public class VidaScript : MonoBehaviour
             }
         }       
     }
-
-    public static IEnumerator Invencivel(float tempoDeDuracao)
-    {
-        Player.Hitbox.SetActive(false);
-        yield return new WaitForSeconds(tempoDeDuracao);
-        Player.Hitbox.SetActive(true);
-    }
-    public static IEnumerator Morrer()
+    public static void Morrer()
     {
         Player.animator.SetBool("Morrer", true);
-        Player.crosshair.SetActive(false);
-        Player.MaoArma.SetActive(false);
-        Player.vivo = false;
 
-        yield return new WaitForSeconds(0f);
-
-        for(int i = 0; i < Player.CoracaoPanel.transform.childCount; i++)
+        for (int i = 0; i < Player.CoracaoPanel.transform.childCount; i++)
         {
             Destroy(Player.CoracaoPanel.transform.GetChild(i).gameObject);
         }
 
-        Destroy(Player.transform.GetComponent<PlayerMoviment>());
-        Destroy(Player.transform.GetComponent<ControladoraDeSalas>());
-        Destroy(Player.transform.GetComponent<Rigidbody2D>());
-        Destroy(Player.transform.GetComponent<Light2D>());
+        Player.crosshair.SetActive(false);
+        Player.MaoArma.SetActive(false);
+        Player.vivo = false;
+        Player.podeAndar = false;
     }
     public static void RedesenharCoracoes()
     {

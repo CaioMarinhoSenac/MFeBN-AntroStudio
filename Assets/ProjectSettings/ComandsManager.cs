@@ -13,17 +13,4 @@ public class ComandsManager : MonoBehaviour
     {
         Application.Quit();
     }
-
-    private void Update()
-    {
-        if (!Player.vivo)
-        {
-            Player.ReloadPanel.SetActive(true);
-
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                SceneManager.LoadScene(1);
-            }
-        }
-    }
 }

@@ -18,7 +18,7 @@ public class PlayerMoviment : MonoBehaviour
     [SerializeField] public float dashSpeed;
     [SerializeField] public float dashCooldown;
     [SerializeField] public float dashDuration;
-    [SerializeField] public float DashFXduration;
+    [SerializeField] public float dashFXDuration;
 
     void Update()
     {
@@ -72,7 +72,7 @@ public class PlayerMoviment : MonoBehaviour
         dashing = true;
         Player.animator.SetBool("Dash", true);
         Player.podeAndar = false;
-        VidaScript.Invencivel(DashFXduration);
+        VidaScript.AtivarInvencibilidade(dashFXDuration);
 
         float elapsedTime = 0f;
         Vector2 originalVelocity = rigidBody.velocity;
@@ -90,7 +90,7 @@ public class PlayerMoviment : MonoBehaviour
 
         StartCoroutine(DashCooldown());
 
-        yield return new WaitForSeconds(DashFXduration);
+        yield return new WaitForSeconds(dashFXDuration);
         Player.animator.SetBool("Dash", false);
         dashing = false;
     }

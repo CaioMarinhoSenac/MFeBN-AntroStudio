@@ -451,6 +451,7 @@ public class GeradorDeLevel : MonoBehaviour
         SalaInicialGO.SetActive(true);
 
     }
+
     void RecriarMapa()
     {
         auxiliar = 0;
@@ -563,5 +564,5 @@ public class GeradorDeLevel : MonoBehaviour
         {
             return "None";
         }
-    } 
+    }
 }
