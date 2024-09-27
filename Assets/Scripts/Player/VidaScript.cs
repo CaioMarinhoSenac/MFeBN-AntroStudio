@@ -60,7 +60,7 @@ public class VidaScript : MonoBehaviour
 
     public static void ReceberDano(float dano)
     {           
-            CoroutineManager.Instance.StartCoroutine(Invencivel());
+            CoroutineManager.Instance.StartCoroutine(Invencivel(Player.receberDanoCooldown));
 
             Player.vida -= dano;
 
@@ -100,10 +100,10 @@ public class VidaScript : MonoBehaviour
         }       
     }
 
-    public static IEnumerator Invencivel()
+    public static IEnumerator Invencivel(float tempoDeDuracao)
     {
         Player.Hitbox.SetActive(false);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(tempoDeDuracao);
         Player.Hitbox.SetActive(true);
     }
     public static IEnumerator Morrer()

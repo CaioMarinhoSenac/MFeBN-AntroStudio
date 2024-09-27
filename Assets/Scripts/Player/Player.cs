@@ -7,6 +7,7 @@ public static class Player
     public static float vida;
     public static float vidaMaxAtual;
     public static float vidaMax;
+    public static float receberDanoCooldown;
 
     public static Transform transform;
 

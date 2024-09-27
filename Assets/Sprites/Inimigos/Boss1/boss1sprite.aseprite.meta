@@ -139,6 +139,46 @@ ScriptedImporter:
     edges: []
     tessellationDetail: 0
     uvTransform: {x: 4, y: 4}
+  - name: boss1sprite_Frame_1
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 76
+      width: 64
+      height: 64
+    spriteID: 06b48929f0162d64abb26e8d74b70ce0
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 76}
+  - name: boss1sprite_Frame_2
+    originalName: 
+    pivot: {x: 0.5, y: 0}
+    alignment: 9
+    border: {x: 0, y: 0, z: 0, w: 0}
+    rect:
+      serializedVersion: 2
+      x: 4
+      y: 148
+      width: 64
+      height: 64
+    spriteID: d24b4a32dcef980418a4214e78f314f4
+    spriteBone: []
+    spriteOutline: []
+    vertices: []
+    spritePhysicsOutline: []
+    indices: 
+    edges: []
+    tessellationDetail: 0
+    uvTransform: {x: 4, y: 148}
   spriteSheetImportData: []
   asepriteLayers:
   - layerIndex: 0
@@ -148,7 +188,7 @@ ScriptedImporter:
     layerType: 0
     blendMode: 0
     cells:
-    - name: boss1sprite
+    - name: boss1sprite_Frame_0
       frameIndex: 0
       cellRect:
         x: 0
@@ -156,6 +196,22 @@ ScriptedImporter:
         width: 64
         height: 64
       spriteId: 17ec46f23ef98d241949e543e61beafb
+    - name: boss1sprite_Frame_1
+      frameIndex: 1
+      cellRect:
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: 06b48929f0162d64abb26e8d74b70ce0
+    - name: boss1sprite_Frame_2
+      frameIndex: 2
+      cellRect:
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      spriteId: d24b4a32dcef980418a4214e78f314f4
     linkedCells: []
     parentIndex: -1
   platformSettings: []

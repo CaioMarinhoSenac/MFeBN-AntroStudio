@@ -7,10 +7,19 @@ public class PlayerMoviment : MonoBehaviour
 {
     private Vector2 movimentDirection;
     private float movimentSpeed;
+    private Vector2 mouseDirection;
+    private bool canDash = true;
+    private bool dashing = false;
 
+    [Header("Configurar PlayerMoviment:")]
     [SerializeField] private float dynamicMovimentSpeed = 1f;
     [SerializeField] private Rigidbody2D rigidBody;
     [SerializeField] private Animator animator;
+    [Header("Configurar Dash:")]
+    [SerializeField] public float dashSpeed;
+    [SerializeField] public float dashCooldown;
+    [SerializeField] public float dashDuration;
+    [SerializeField] public float DashFXduration;
 
     void Update()
     {
@@ -18,7 +27,12 @@ public class PlayerMoviment : MonoBehaviour
         {
             Inputs();
             Move();
-            Animate();
+            AplicarDash();
+            Animate();         
+        }
+        if (dashing)
+        {
+            Shadows.instance.SombrasSkill();
         }
     }
 
@@ -39,10 +53,62 @@ public class PlayerMoviment : MonoBehaviour
     {
         if (movimentDirection != Vector2.zero)
         {
-            animator.SetFloat("Horizontal", movimentDirection.x);
-            animator.SetFloat("Vertical", movimentDirection.y);
+            animator.SetFloat("HorizontalAxis", movimentDirection.x);
+            animator.SetFloat("VerticalAxis", movimentDirection.y);
         }
 
         animator.SetFloat("Speed", movimentSpeed);
+
+        if (mouseDirection != Vector2.zero)
+        {
+            animator.SetFloat("HorizontalMouse", mouseDirection.x);
+            animator.SetFloat("VerticalMouse", mouseDirection.y);
+        }
+    }
+
+    void AplicarDash()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            StartCoroutine(PerformDash());
+        }
+    }
+
+    IEnumerator PerformDash()
+    {
+        dashing = true;
+        Player.animator.SetBool("Dash", true);
+        Player.podeAndar = false;
+        VidaScript.Invencivel(DashFXduration);
+
+        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        mouseDirection = (mousePosition - transform.position).normalized;
+
+        float elapsedTime = 0f;
+        Vector2 originalVelocity = rigidBody.velocity;
+
+        while (elapsedTime < dashDuration)
+        {
+            rigidBody.velocity = mouseDirection * dashSpeed * Time.fixedDeltaTime;
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        rigidBody.velocity = originalVelocity;
+
+        Player.podeAndar = true;
+
+        StartCoroutine(DashCooldown());
+
+        yield return new WaitForSeconds(DashFXduration);
+        Player.animator.SetBool("Dash", false);
+        dashing = false;
+    }
+
+    IEnumerator DashCooldown()
+    {
+        canDash = false; 
+        yield return new WaitForSeconds(dashCooldown); 
+        canDash = true; 
     }
 }
