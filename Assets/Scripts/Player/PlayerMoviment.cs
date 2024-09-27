@@ -53,17 +53,11 @@ public class PlayerMoviment : MonoBehaviour
     {
         if (movimentDirection != Vector2.zero)
         {
-            animator.SetFloat("HorizontalAxis", movimentDirection.x);
-            animator.SetFloat("VerticalAxis", movimentDirection.y);
+            animator.SetFloat("Horizontal", movimentDirection.x);
+            animator.SetFloat("Vertical", movimentDirection.y);
         }
 
         animator.SetFloat("Speed", movimentSpeed);
-
-        if (mouseDirection != Vector2.zero)
-        {
-            animator.SetFloat("HorizontalMouse", mouseDirection.x);
-            animator.SetFloat("VerticalMouse", mouseDirection.y);
-        }
     }
 
     void AplicarDash()
@@ -81,15 +75,12 @@ public class PlayerMoviment : MonoBehaviour
         Player.podeAndar = false;
         VidaScript.Invencivel(DashFXduration);
 
-        Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mouseDirection = (mousePosition - transform.position).normalized;
-
         float elapsedTime = 0f;
         Vector2 originalVelocity = rigidBody.velocity;
 
         while (elapsedTime < dashDuration)
         {
-            rigidBody.velocity = mouseDirection * dashSpeed * Time.fixedDeltaTime;
+            rigidBody.velocity = movimentDirection * dashSpeed * Time.fixedDeltaTime;
             elapsedTime += Time.deltaTime;
             yield return null;
         }
