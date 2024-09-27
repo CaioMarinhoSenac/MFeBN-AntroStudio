@@ -31440,6 +31440,37 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!1 &452081096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 452081097}
+  m_Layer: 10
+  m_Name: ShellEjector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &452081097
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 452081096}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: 0.4610966, w: 0.88734996}
+  m_LocalPosition: {x: -0.060000077, y: 0.099999994, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1658764663}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 54.916}
 --- !u!1 &453715079
 GameObject:
   m_ObjectHideFlags: 0
@@ -92601,6 +92632,7 @@ MonoBehaviour:
   projetil: {fileID: 6132166454673448238, guid: f90b53943e46f2b468fdcf6eacdcb561, type: 3}
   muzzleFlash: {fileID: 1997560206}
   RecarregarSlider: {fileID: 2052132221}
+  bulletShellEjector: {fileID: 0}
   canos:
   - {fileID: 1549889628}
   - {fileID: 692617430}
@@ -116943,6 +116975,7 @@ Transform:
   - {fileID: 1903053562}
   - {fileID: 682163378}
   - {fileID: 2724153632149301473}
+  - {fileID: 452081097}
   m_Father: {fileID: 660590463}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1658764665
@@ -132583,6 +132616,53 @@ MonoBehaviour:
   - {x: 202.10794, y: 68.133484, z: 0.00041345588}
   - {x: 1029.2582, y: 56.421974, z: 0.00041345588}
   - {x: 1045.1489, y: 246.91582, z: 0.00041345588}
+--- !u!1 &1894926391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1894926393}
+  - component: {fileID: 1894926392}
+  m_Layer: 0
+  m_Name: ShellPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1894926392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894926391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be5ea206d424f0f4f9063a7d46720179, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellPlayerPrefab: {fileID: 1198589720082830548, guid: 0734e9d2299a26d48a10f1cae2d66e2b, type: 3}
+  shellEnemyPrefab: {fileID: 1198589720082830548, guid: 2c34b9aec2185944394abdbd499919a3, type: 3}
+  poolSize: 25
+--- !u!4 &1894926393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1894926391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 2.4027646, y: -1.5777516, z: -3.487321}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1895364839
 GameObject:
   m_ObjectHideFlags: 0
@@ -141219,7 +141299,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -680, y: -35}
+  m_AnchoredPosition: {x: -680, y: -35.00003}
   m_SizeDelta: {x: -1820, y: -978}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &2037679357
@@ -147484,6 +147564,7 @@ GameObject:
   - component: {fileID: 2127869969}
   - component: {fileID: 2127869971}
   - component: {fileID: 2127869970}
+  - component: {fileID: 2127869972}
   m_Layer: 10
   m_Name: Pistola
   m_TagString: Player
@@ -147529,6 +147610,7 @@ MonoBehaviour:
   projetil: {fileID: 6132166454673448238, guid: f90b53943e46f2b468fdcf6eacdcb561, type: 3}
   muzzleFlash: {fileID: 330231402178645691}
   RecarregarSlider: {fileID: 2052132221}
+  bulletShellEjector: {fileID: 2127869972}
   canos:
   - {fileID: 1903053562}
   - {fileID: 1106656377}
@@ -147585,6 +147667,21 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &2127869972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2127869967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01174d4b01035004e9b0df8733652590, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shellPool: {fileID: 1894926392}
+  ejectionPoint: {fileID: 452081097}
+  shellType: 0
 --- !u!1 &2128383906
 GameObject:
   m_ObjectHideFlags: 0
@@ -149406,3 +149503,4 @@ SceneRoots:
   - {fileID: 224872704}
   - {fileID: 1425575145}
   - {fileID: 463535782}
+  - {fileID: 1894926393}
