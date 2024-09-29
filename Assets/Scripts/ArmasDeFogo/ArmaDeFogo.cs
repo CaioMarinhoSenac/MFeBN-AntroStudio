@@ -16,6 +16,7 @@ public class ArmaDeFogo : MonoBehaviour
     [SerializeField] protected Transform ejectionPoint;
     [SerializeField] protected int tipoShell;
     [SerializeField] protected GameObject projetil;
+    [SerializeField] protected GameObject recarregarSliderObject; 
     [SerializeField] protected GameObject muzzleFlash;
     [SerializeField] protected GameObject RecarregarSlider;
     [SerializeField] protected Transform[] canos;
@@ -31,6 +32,7 @@ public class ArmaDeFogo : MonoBehaviour
     protected float cadenciaControl;
     protected Vector3 playerParaDirecao;
     protected float movimentSpeed;
+    protected ReloadingScript RecarregarSliderScript;
 
     protected void Start()
     {
@@ -39,6 +41,7 @@ public class ArmaDeFogo : MonoBehaviour
         cano = 0;
         camAnimations = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<CamAnimations>();
         muzzleFlash.SetActive(false);
+        RecarregarSliderScript = recarregarSliderObject.GetComponent<ReloadingScript>();
     }
     protected void OnEnable()
     {
@@ -96,9 +99,11 @@ public class ArmaDeFogo : MonoBehaviour
 
         somRecarga.Play();
 
+        RecarregarSliderScript.ConfigurarTempoDeRecarga(tempoDeRecarga);
         RecarregarSlider.SetActive(true);
 
         yield return new WaitForSeconds(tempoDeRecarga);
+
         recarregando = false;
         animator.SetBool("Recarregando", false);
 

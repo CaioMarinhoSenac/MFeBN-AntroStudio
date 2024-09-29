@@ -6,7 +6,6 @@ public class ArmaDeFogoInimiga : MonoBehaviour
     [Header("Configurar arma:")]
     [SerializeField] protected float cadencia;
     [SerializeField] protected float distanciaParaDisparar;
-    [SerializeField] protected Transform cano;
     [SerializeField] protected float spawnCooldown;
     [SerializeField] protected float danoDoProjetil;
     [SerializeField] protected float velocidadeDoProjetil;
@@ -17,11 +16,13 @@ public class ArmaDeFogoInimiga : MonoBehaviour
     [SerializeField] protected Transform ejectionPoint;
     [SerializeField] protected int tipoShell;
     [SerializeField] protected ShellPool shellPool;
+    [SerializeField] protected Transform[] canos;
     [SerializeField] protected GameObject projetilInimigo;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AudioSource somDisparo;
     [SerializeField] protected AudioSource somRecarga;
 
+    protected int cano;
     protected float cadenciaControl;
     protected float movimentSpeed;
     protected bool podeAtirar;

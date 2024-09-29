@@ -1,27 +1,24 @@
-using JetBrains.Annotations;
-using System.Collections;
-using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class ReloadingScript : MonoBehaviour
-{
-    private float tempoDeDuracao, tempo;
-    public Image fill;
-    public AudioSource somRecarregar;
+{   
+    [SerializeField] private Image fill;
 
+    private float tempoDeRecarga, tempo;
+    public void ConfigurarTempoDeRecarga(float tempoDeRecarga)
+    {
+        this.tempoDeRecarga = tempoDeRecarga;
+    }
     private void OnEnable()
     {
-        somRecarregar.Play();
-        tempoDeDuracao = 1.5f;
-        tempo = tempoDeDuracao;
-        Update();        
+        tempo = tempoDeRecarga;
+        Update();
     }
     void Update()
     {
         tempo -= Time.deltaTime;
-        fill.fillAmount = tempo / tempoDeDuracao;
+        fill.fillAmount = tempo / tempoDeRecarga;
 
         if (tempo < 0)
         {
