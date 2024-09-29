@@ -58,11 +58,11 @@ public class VidaScript : MonoBehaviour
         CoroutineManager.Instance.StartCoroutine(Invencivel(duracao));
     }
 
-    public static IEnumerator Invencivel(float cooldown)
+    public static IEnumerator Invencivel(float duracao)
     {
         Player.invencivel = true; // Ativa a invencibilidade
 
-        yield return new WaitForSeconds(cooldown); // Aguarda a duração da invencibilidade
+        yield return new WaitForSeconds(duracao); // Aguarda a duração da invencibilidade
 
         Player.invencivel = false; // Desativa a invencibilidade
     }

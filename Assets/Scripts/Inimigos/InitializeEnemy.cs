@@ -12,6 +12,7 @@ public class InitializeEnemy : MonoBehaviour
     private void Start()
     {
         EnemyLifeScript enemyLifeScript = GetComponent<EnemyLifeScript>();
+
         enemyLifeScript.vida = enemyVida;
         enemyLifeScript.animator = enemyAnimator;
         enemyLifeScript.maoArma = enemyMaoArma;

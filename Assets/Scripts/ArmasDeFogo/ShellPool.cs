@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class ShellPool : MonoBehaviour
 {
-    public GameObject shellPistolaPrefab;  // Prefab do cartucho da pistola
-    public GameObject shellShortyPrefab;    // Prefab do cartucho da shorty
-    public GameObject shellEnemyPrefab;      // Prefab do cartucho do inimigo
+    public GameObject shellAutomaticaPrefab;  // Prefab do cartucho da pistola
+    public GameObject shellEscopetaPrefab;    // Prefab do cartucho da shorty
+    public GameObject shellInimigaPrefab;      // Prefab do cartucho do inimigo
     public int poolSize;                     // Tamanho do pool para cada tipo de cartucho
     public AudioSource somShell;
 
@@ -17,11 +17,11 @@ public class ShellPool : MonoBehaviour
         // Inicializa o dicionário de filas (Queue)
         shellPools = new Dictionary<int, Queue<GameObject>>();
 
-        // Inicializa o pool do jogador (0) para a pistola
+        // Inicializa o pool do jogador (0) para a automatica
         shellPools[0] = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject shell = Instantiate(shellPistolaPrefab);
+            GameObject shell = Instantiate(shellAutomaticaPrefab);
             shell.SetActive(false);
             shellPools[0].Enqueue(shell);  // Adiciona ao Queue
         }
@@ -30,22 +30,22 @@ public class ShellPool : MonoBehaviour
         shellPools[1] = new Queue<GameObject>();
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject shell = Instantiate(shellEnemyPrefab);
+            GameObject shell = Instantiate(shellInimigaPrefab);
             shell.SetActive(false);
             shellPools[1].Enqueue(shell);  // Adiciona ao Queue
         }
 
         // Inicializa o pool da shorty (2)
-        shellPools[2] = new Queue<GameObject>();  // Corrigido: use 2 para shorty
+        shellPools[2] = new Queue<GameObject>();  // Corrigido: use 2 para escopeta
         for (int i = 0; i < poolSize; i++)
         {
-            GameObject shell = Instantiate(shellShortyPrefab);
+            GameObject shell = Instantiate(shellEscopetaPrefab);
             shell.SetActive(false);
             shellPools[2].Enqueue(shell);  // Adiciona ao Queue
         }
     }
 
-    // Método para obter um cartucho com base no tipo (0 = pistola, 1 = inimigo, 2 = shorty)
+    // Método para obter um cartucho com base no tipo (0 = automatica, 1 = inimigo, 2 = escopeta)
     public GameObject GetShell(int shellType)
     {
         if (!shellPools.ContainsKey(shellType))
@@ -80,16 +80,16 @@ public class ShellPool : MonoBehaviour
         }
 
         // Se o pool não estiver cheio, cria um novo cartucho e adiciona ao pool
-        GameObject newShell = shellType == 0 ? Instantiate(shellPistolaPrefab) :
-                             shellType == 1 ? Instantiate(shellEnemyPrefab) :
-                             Instantiate(shellShortyPrefab);
+        GameObject newShell = shellType == 0 ? Instantiate(shellAutomaticaPrefab) :
+                             shellType == 1 ? Instantiate(shellInimigaPrefab) :
+                             Instantiate(shellEscopetaPrefab);
         newShell.SetActive(false);  // Desativa o novo cartucho
         selectedPool.Enqueue(newShell);  // Adiciona o novo cartucho ao pool
         return newShell;
     }
     private IEnumerator SomDoShell()
     {
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.35f);
         somShell.Play();
     }
 }

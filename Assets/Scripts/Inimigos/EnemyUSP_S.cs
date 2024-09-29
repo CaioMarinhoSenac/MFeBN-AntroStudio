@@ -1,31 +1,27 @@
 using System.Collections;
 using UnityEngine;
 
-public class ArmaAutomatica : ArmaDeFogo
+public class EnemyUSP_S : ArmaDeFogoInimiga
 {
     protected override IEnumerator Disparar()
     {
-        if (cano >= canos.Length && canos.Length > 1)
+        if (!PodeDisparar())
         {
-            cano = 0;
             yield break;
         }
         else
         {
             cadenciaControl = Time.time + cadencia;
-            municaoAtual--;
 
-            GameObject novoProjetil = Instantiate(projetil, canos[cano].position, canos[cano].rotation);
+            Instantiate(projetilInimigo, cano.position, cano.rotation);
+
+            GameObject novoProjetil = Instantiate(projetilInimigo, cano.position, cano.rotation);
             Projetil proj = novoProjetil.GetComponent<Projetil>();
             proj.ConfigurarProjetil(danoDoProjetil, velocidadeDoProjetil, duracaoDoProjetil);
 
-            somDisparo.Play();
-
             EjetarCartucho();
 
-            camAnimations.CamShake();
-
-            cano++;
+            somDisparo.Play();
 
             muzzleFlash.SetActive(true);
             yield return new WaitForSeconds(0.5f);

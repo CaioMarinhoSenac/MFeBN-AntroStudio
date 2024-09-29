@@ -15,18 +15,22 @@ public class EnemyLifeScript : MonoBehaviour
         vida -= dano;
         if (vida <= 0)
         {
-            StartCoroutine(Morrer());
+            Morrer();
         }
     }
 
-    private IEnumerator Morrer()
+    private void Morrer()
     {
         animator.SetBool("Morrer", true);
-        maoArma.SetActive(false);
+        if (maoArma != null) 
+        {
+            maoArma.SetActive(false);
+        }
 
-        yield return new WaitForSeconds(0f);
-
-        Destroy(GetComponent<EnemyRangedMoviment>());
+        if (transform.GetComponent<EnemyRangedMoviment>() != null)
+        {
+            Destroy(GetComponent<EnemyRangedMoviment>());
+        }
         Destroy(GetComponent<BoxCollider2D>());
         Destroy(GetComponent<Rigidbody2D>());
         Destroy(GetComponent<Light2D>());
