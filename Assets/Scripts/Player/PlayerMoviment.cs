@@ -35,10 +35,10 @@ public class PlayerMoviment : MonoBehaviour
             AplicarDash();
             Animate();         
         }
-        if (dashing)
-        {
+        //if (dashing)
+        //{
             Shadows.instance.SombrasSkill();
-        }
+        //}
     }
 
     void Inputs()

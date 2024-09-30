@@ -18,7 +18,6 @@ public class ArmaDeFogo : MonoBehaviour
     [SerializeField] protected GameObject projetil;
     [SerializeField] protected GameObject recarregarSliderObject; 
     [SerializeField] protected GameObject muzzleFlash;
-    [SerializeField] protected GameObject RecarregarSlider;
     [SerializeField] protected Transform[] canos;
     [SerializeField] protected Animator animator;
     [SerializeField] protected CamAnimations camAnimations;
@@ -100,7 +99,7 @@ public class ArmaDeFogo : MonoBehaviour
         somRecarga.Play();
 
         RecarregarSliderScript.ConfigurarTempoDeRecarga(tempoDeRecarga);
-        RecarregarSlider.SetActive(true);
+        recarregarSliderObject.SetActive(true);
 
         yield return new WaitForSeconds(tempoDeRecarga);
 
@@ -108,7 +107,7 @@ public class ArmaDeFogo : MonoBehaviour
         animator.SetBool("Recarregando", false);
 
         municaoAtual = municaoMaxima;
-        RecarregarSlider.SetActive(false);
+        recarregarSliderObject.SetActive(false);
     }
     protected void EjetarCartucho()
     {
