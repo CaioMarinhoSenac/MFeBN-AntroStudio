@@ -18,10 +18,6 @@
 
 ###
 
-<img align="right" height="400" src="https://github.com/user-attachments/assets/7072806d-c227-4498-9c0b-16ec2af822a9"  />
-
-###
-
 <h3 align="right">Tecnologias Utilizadas</h3>
 
 ###
@@ -41,6 +37,22 @@
 <div align="left">
   <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" height="40" alt="csharp logo"  />
 </div>
+
+###
+
+<img align="right" height="400" src="https://github.com/user-attachments/assets/7072806d-c227-4498-9c0b-16ec2af822a9"  />
+
+###
+
+<br clear="both">
+
+<h2 align="left"></h2>
+
+###
+
+<br clear="both">
+
+<h3 align="right"><a href="https://oibaga.itch.io/magos-feiticeiros-e-bombas-nucleares" target="_blank">Itch.io</a></h3>
 
 ###
 
