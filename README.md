@@ -1,6 +1,10 @@
+<br clear="both">
+
 <h4 align="center">Repositório da Antro Studio</h4>
 
 ###
+
+<br clear="both">
 
 <h1 align="left">Magos, Feiticeiros e Bombas Nucleares</h1>
 
@@ -11,6 +15,10 @@
 ###
 
 <h2 align="left"></h2>
+
+###
+
+<img align="right" height="400" src="https://github.com/user-attachments/assets/7072806d-c227-4498-9c0b-16ec2af822a9"  />
 
 ###
 
@@ -36,21 +44,22 @@
 
 ###
 
+<br clear="both">
+
 <h2 align="left"></h2>
 
 ###
 
 <br clear="both">
 
-<div align="left">
-  <img height="200" src="https://github.com/user-attachments/assets/dc377de3-5888-48e6-b605-e0714f7e64a2"  />
-</div>
-<div align="right">
-  <img height="250" src="https://github.com/user-attachments/assets/3b6956a8-28ba-4bf3-b796-2e412c8ab03c"  />
-</div>
+<h6 align="center">2024.</h6>
 
 ###
 
-<h6 align="center">2024.</h6>
+<br clear="both">
+
+<div align="center">
+  <img height="100" src="https://github.com/user-attachments/assets/592f5040-aa42-431b-9aeb-bc8fcd00f8a8"  />
+</div>
 
 ###
