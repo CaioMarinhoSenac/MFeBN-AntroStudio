@@ -20,7 +20,6 @@ public class ArmaDeFogoInimiga : MonoBehaviour
     [SerializeField] protected GameObject projetilInimigo;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AudioSource somDisparo;
-    [SerializeField] protected AudioSource somRecarga;
 
     protected int cano;
     protected float cadenciaControl;

@@ -124,9 +124,8 @@ public class ArmaDeFogo : MonoBehaviour
             Quaternion shellRotation = ejectionPoint.rotation * Quaternion.Euler(0, 0, randomRotation);
 
             shell.transform.SetPositionAndRotation(shellPosition, shellRotation);
-            shell.SetActive(true);  // Ativa o cartucho
+            shell.SetActive(true);  
 
-            // Adiciona força e torque para simular a ejeção
             Rigidbody2D shellRb = shell.GetComponent<Rigidbody2D>();
             if (shellRb != null)
             {

@@ -744,7 +744,6 @@ GameObject:
   - component: {fileID: 1317309191105653397}
   - component: {fileID: 1606840812092480541}
   - component: {fileID: 6154446627605022115}
-  - component: {fileID: 5794428467431596121}
   - component: {fileID: 7792518261144563818}
   - component: {fileID: 2966025505443302239}
   m_Layer: 9
@@ -895,26 +894,6 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
---- !u!114 &5794428467431596121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6410250346739786111}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0ca2c0da80f2e78409989fb7020102cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cadencia: 2
-  distanciaParaDisparar: 5.5
-  cano: {fileID: 9205769379908348147}
-  muzzleFlash: {fileID: 1788055788982384922}
-  projetilInimigo: {fileID: 6132166454673448238, guid: 9b81860a188f88841aab5c213105a5ff, type: 3}
-  bulletShellEjector: {fileID: 7792518261144563818}
-  animator: {fileID: 1606840812092480541}
-  somDisparo: {fileID: 2966025505443302239}
 --- !u!114 &7792518261144563818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -924,12 +903,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 6410250346739786111}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01174d4b01035004e9b0df8733652590, type: 3}
+  m_Script: {fileID: 11500000, guid: 114173870aa67da4da8373e925ec2f97, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shellPool: {fileID: 0}
+  cadencia: 2
+  distanciaParaDisparar: 5.5
+  spawnCooldown: 1
+  danoDoProjetil: 0.5
+  velocidadeDoProjetil: 5
+  duracaoDoProjetil: 5
+  muzzleFlash: {fileID: 1788055788982384922}
   ejectionPoint: {fileID: 4394766913015921861}
-  shellType: 1
+  tipoShell: 2
+  shellPool: {fileID: 0}
+  canos:
+  - {fileID: 9205769379908348147}
+  projetilInimigo: {fileID: 6132166454673448238, guid: 9b81860a188f88841aab5c213105a5ff, type: 3}
+  animator: {fileID: 1606840812092480541}
+  somDisparo: {fileID: 2966025505443302239}
 --- !u!82 &2966025505443302239
 AudioSource:
   m_ObjectHideFlags: 0
