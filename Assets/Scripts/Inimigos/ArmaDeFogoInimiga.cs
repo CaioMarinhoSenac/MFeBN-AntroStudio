@@ -33,6 +33,11 @@ public class ArmaDeFogoInimiga : MonoBehaviour
         StartCoroutine(Spawnou());
         muzzleFlash.SetActive(false);
         target = GameObject.FindGameObjectWithTag("Player");
+
+        if(shellPool == null)
+        {
+             shellPool = GameObject.Find("ShellPool").GetComponent<ShellPool>();
+        }
     }
 
     protected void Update()
@@ -100,6 +105,7 @@ public class ArmaDeFogoInimiga : MonoBehaviour
 
             // Adiciona força e torque para simular a ejeção
             Rigidbody2D shellRb = shell.GetComponent<Rigidbody2D>();
+
             if (shellRb != null)
             {
                 Vector2 ejectionDirection = ejectionPoint.up;
